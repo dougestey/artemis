@@ -1,0 +1,29 @@
+.SelectedEntity {
+  padding: 2rem;
+  border-left: 1px transparentize($secondary, 0.5) solid;
+  overflow: hidden;
+  position: relative;
+  flex-basis: 100%;
+  color: $secondary;
+
+  &-name {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: $primary;
+  }
+
+  &-background {
+    background-size: contain;
+    background-position-x: 100%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+}

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,800');
+
+$primary: #d2fffd;
+$secondary: #3c9a95;
+
+$font-family: 'Titillium Web', 'EVE Sans', sans-serif;
+
+@import 'components/index';
+
+html,
+body,
+body > div {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: black;
+  color: $primary;
+  font-family: $font-family;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  overflow: hidden;
+  margin: 0;
+}
+
+.SearchResults {
+  display: flex;
+  flex-direction: column;
+}
+
+.SelectedEntities {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

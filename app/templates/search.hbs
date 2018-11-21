@@ -1,0 +1,28 @@
+<ContainerBlock>
+  <CommandLine
+    @onResult={{action "setResult"}}
+    @onSelect={{action "pushResult"}}
+    @focusCommandLine={{focusCommandLine}}
+    @message={{message}}
+    class="ContainerBlock-child--33" />
+
+  {{#liquid-if results class="ContainerBlock-child--33"}}
+
+    <div class="SearchResults">
+      {{#each results as |result|}}
+        <SearchResult
+          @result={{result}}
+          @onSelect={{action "pushResult" }} />
+      {{/each}}
+    </div>
+
+  {{/liquid-if}}
+
+  <div class="SelectedEntities ContainerBlock-child--33">
+    {{#each selected as |entity|}}
+      <SelectedEntity
+        @entity={{entity}} />
+    {{/each}}
+  </div>
+
+</ContainerBlock>

@@ -1,0 +1,10 @@
+<input
+  type="text"
+  class="CommandLine-control"
+  placeholder="Enter a character name"
+  spellcheck="false"
+  oninput={{perform runSentinelQuery value="target.value"}} />
+
+<div class="CommandLine-message">
+  {{@message}}
+</div>

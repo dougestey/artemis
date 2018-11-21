@@ -1,0 +1,25 @@
+.SearchResult {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 175ms ease-in-out;
+  background: transparent;
+  border: none;
+  color: $primary;
+  font-family: 'Titillium Web';
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin: 0.5rem;
+  outline: none;
+  cursor: pointer;
+
+  &-image {
+    width: 3rem;
+    margin-right: 1rem;
+  }
+
+  &:focus,
+  &:hover {
+    opacity: 1;
+  }
+}

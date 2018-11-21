@@ -1,0 +1,37 @@
+.CommandLine {
+  position: relative;
+  width: 100%;
+  // max-width: 40rem !important;
+  // margin: 0 auto;
+
+  &-control {
+    background: transparent;
+    border: none;
+    border-bottom: 1px transparentize($secondary, 0.5) solid;
+    appearance: none;
+    outline: none;
+
+    font-size: 3rem;
+    font-family: 'Titillium Web';
+    line-height: 3.5rem;
+
+    color: $primary;
+    padding-bottom: 0.5rem;
+
+    &:focus {
+      border-bottom-color: transparentize($secondary, 0.3);
+    }
+
+    &::placeholder {
+      color: $secondary;
+      opacity: 0.3;
+    }
+  }
+
+  &-message {
+    position: absolute;
+    bottom: -2rem;
+    color: $secondary;
+  }
+
+}

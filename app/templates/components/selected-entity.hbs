@@ -1,0 +1,23 @@
+<div class="SelectedEntity-background" style={{backgroundImage}} />
+
+<h1 class="SelectedEntity-name">{{entity.name}}</h1>
+{{if entity.alliance entity.alliance.name entity.corporation.name}}
+<br>
+Last seen {{moment-from-now lastActive interval=1000}}
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+{{#each-in mostCommonShipType as |ship key|}}
+  <img src={{eve-avatar "render" ship 32}} />
+{{/each-in}}
+
+<br>
+
+Danger: {{entity.dangerRatio}}
+<br>
+Average fleet: {{averageFleetSize}} pilots
