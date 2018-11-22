@@ -1,23 +1,42 @@
 <div class="SelectedEntity-background" style={{backgroundImage}} />
 
-<h1 class="SelectedEntity-name">{{entity.name}}</h1>
-{{if entity.alliance entity.alliance.name entity.corporation.name}}
-<br>
-Last seen {{moment-from-now lastActive interval=1000}}
-<br>
+<div class="SelectedEntity-data">
+  <h1 class="SelectedEntity-name">{{entity.name}}</h1>
+  
+  <div class="SelectedEntity-group">
+    {{#if entity.alliance}}
+      <img src={{eve-avatar "alliance" entity.alliance.id 32}} />
 
-<br>
+      {{entity.alliance.name}}
+    {{else}}
+      <img src={{eve-avatar "corporation" entity.corporation.id 32}} />
 
-<br>
+      {{entity.corporation.name}}
+    {{/if}}
+  </div>
 
-<br>
+  <br>
 
-{{#each-in mostCommonShipType as |ship key|}}
-  <img src={{eve-avatar "render" ship 32}} />
-{{/each-in}}
+  <br>
 
-<br>
+  <br>
 
-Danger: {{entity.dangerRatio}}
-<br>
-Average fleet: {{averageFleetSize}} pilots
+  <br>
+
+  {{#each-in mostCommonShipType as |ship key|}}
+    <img src={{eve-avatar "render" ship 32}} />
+  {{/each-in}}
+
+  <br>
+
+  Danger: {{entity.dangerRatio}}
+  <br>
+  Average fleet size: {{averageFleetSize}}
+  <br>
+
+  {{#if (eq lastActive 'Unknown')}}
+    Not yet seen in fleet
+  {{else}}
+    Last seen {{moment-from-now lastActive interval=1000}}
+  {{/if}}
+</div>

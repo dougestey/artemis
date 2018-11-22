@@ -1,10 +1,20 @@
-<input
-  type="text"
+<textarea
+  rows="1"
   class="CommandLine-control"
-  placeholder="Enter a character name"
+  placeholder="Enter a pilot name"
   spellcheck="false"
   oninput={{perform runSentinelQuery value="target.value"}} />
 
 <div class="CommandLine-message">
-  {{@message}}
+  {{#if runSentinelQuery.isRunning}}
+    Searching...
+  {{else}}
+    {{#liquid-if @message use="fade" shrinkDelay=2000}}
+      {{@message}}
+    {{else if hasKeyedUp}}
+      Tip: use tab to navigate results
+    {{else}}
+      Or ctrl+v a list of channel members.
+    {{/liquid-if}}
+  {{/if}}
 </div>

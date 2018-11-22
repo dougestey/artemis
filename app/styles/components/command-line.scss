@@ -1,8 +1,9 @@
 .CommandLine {
   position: relative;
-  width: 100%;
-  // max-width: 40rem !important;
-  // margin: 0 auto;
+  width: 95%;
+  display: flex;
+  margin: 2rem auto 3rem;
+  min-height: 4rem;
 
   &-control {
     background: transparent;
@@ -10,10 +11,13 @@
     border-bottom: 1px transparentize($secondary, 0.5) solid;
     appearance: none;
     outline: none;
+    width: 100%;
+    resize: none;
+    overflow: hidden;
 
     font-size: 3rem;
     font-family: 'Titillium Web';
-    line-height: 3.5rem;
+    line-height: 4rem;
 
     color: $primary;
     padding-bottom: 0.5rem;
@@ -32,6 +36,10 @@
     position: absolute;
     bottom: -2rem;
     color: $secondary;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 90%;
   }
 
 }

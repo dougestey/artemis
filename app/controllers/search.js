@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { later } from '@ember/runloop';
+import { isArray } from '@ember/array';
 
 export default Controller.extend({
 
@@ -17,14 +18,27 @@ export default Controller.extend({
     },
 
     pushResult(result) {
-      if (!this.selected.findBy('id', result.id))
-        this.selected.pushObject(result);
+      if (isArray(result)) {
+        // this.set('message', null);
+        this.set('focusCommandLine', true);
 
-      this.set('results', []);
+        return this.set('selected', result);
+      }
+
+      if (!this.selected.findBy('id', result.id))
+        this.selected.unshiftObject(result);
+
       this.set('message', null);
       this.set('focusCommandLine', true);
 
       later(() => { this.set('focusCommandLine', false) });
+    },
+
+    removeEntity(id) {
+      let existing = this.selected.findBy('id', id);
+
+      if (existing)
+        this.selected.removeObject(existing);
     },
   },
 

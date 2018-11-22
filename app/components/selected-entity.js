@@ -7,8 +7,15 @@ import _ from 'npm:lodash';
 export default Component.extend({
   classNames: ['SelectedEntity'],
 
+  click() {
+    this.removeEntity(this.entity.id);
+  },
+
   lastActive: computed('entity.fleet.lastSeen', function() {
-    return this.entity.fleet && this.entity.fleet.lastSeen ? this.entity.fleet.lastSeen : 'Unknown';
+    if (this.entity.history.length)
+      return this.entity.history[this.entity.history.length - 1].lastSeen;
+
+    return 'Unknown';
   }),
 
   averageFleetSize: computed('entity.history', function() {
@@ -18,7 +25,10 @@ export default Component.extend({
       sum = sum + _.values(fleet.composition).length;
     }
 
-    return parseInt(sum / this.entity.history.length);
+    if (sum && this.entity.history.length)
+      return parseInt(sum / this.entity.history.length);
+
+    return 'Unknown';
   }),
 
   mostCommonShipType: computed('entity.history', function() {
@@ -27,7 +37,8 @@ export default Component.extend({
     for (let fleet of this.entity.history) {
       let shipType = fleet.composition[this.entity.id];
 
-      ships.push(shipType);
+      if (shipType)
+        ships.push(shipType);
     }
 
     // let mostCommon = _.max(_.keys(_.countBy(ships)), o => obj[o]);
