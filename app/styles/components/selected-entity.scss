@@ -1,8 +1,7 @@
 .SelectedEntity {
   padding: 2rem;
-  // margin: 1rem 0;
-  border-right: 1px transparentize($secondary, 0.5) solid;
-  border-bottom: 1px transparentize($secondary, 0.5) solid;
+  border-right: 1px transparentize($secondary, 0.85) solid;
+  border-bottom: 1px transparentize($secondary, 0.85) solid;
   overflow: hidden;
   position: relative;
   flex-basis: 50%;
@@ -10,6 +9,12 @@
   min-width: 500px;
   box-sizing: border-box;
   cursor: pointer;
+  opacity: 0.8;
+  transition: 175ms opacity ease-in;
+
+  &:hover {
+    opacity: 1;
+  }
 
   &-data {
     max-width: 65%;
@@ -45,7 +50,18 @@
     z-index: -1;
   }
 
-  @media screen and (max-width: 1460px) {
-    flex-basis: 100%;
+  @media screen and (max-width: 1030px) {
+    min-width: 100%;
+    
+    .SelectedEntity-background {
+      left: 0;
+      opacity: 0.2;
+      background-size: cover;
+      background-position-y: 40%;
+    }
+
+    .SelectedEntity-data {
+      max-width: 100%;
+    }
   }
 }

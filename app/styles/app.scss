@@ -24,6 +24,73 @@ body {
   margin: 0;
 }
 
+.SearchPane {
+  flex-basis: 400px;
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  background-color: transparentize($secondary, 0.9);
+  transition: 375ms margin ease-in, 375ms background-color ease-in;
+  overflow: hidden;
+
+  &:hover {
+    background-color: transparentize($secondary, 0.88);
+  }
+
+  &--collapsed {
+    margin-left: -370px;
+
+    .SearchPane-button {
+      transform: rotate(0);
+      opacity: 0.15;
+    }
+  }
+
+  &-viewport {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+
+  &-button {
+    background-color: transparent;
+    border: none;
+    width: 2rem;
+    outline: none;
+    transform-origin: 50% 37%;
+    transform: rotate(-180deg);
+    cursor: pointer;
+    opacity: 0.2;
+    transition: 175ms opacity ease-in;
+
+    svg path {
+      fill: $primary;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 667px) {
+    flex-basis: 100%;
+
+    &--collapsed {
+      margin-left: -90%;
+  
+      .SearchPane-button {
+        transform: rotate(0);
+        opacity: 0.15;
+      }
+    }
+  }
+}
+
 .SearchResults {
   display: flex;
   flex-direction: column;
@@ -31,5 +98,26 @@ body {
 
   @media screen and (max-width: 1024px) {
     width: 95%;
+  }
+}
+
+.SelectedEntities {
+  flex-basis: calc(100% - 400px);
+  max-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  transition: 375ms flex-basis ease-in-out;
+
+  &--expanded {
+    flex-basis: calc(100% - 30px);
+  }
+
+  @media screen and (max-width: 667px) {
+    flex-basis: 100%;
+
+    &--expanded {
+      flex-basis: 90%;
+    }
   }
 }

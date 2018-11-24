@@ -15,9 +15,9 @@
     resize: none;
     overflow: hidden;
 
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-family: 'Titillium Web';
-    line-height: 4rem;
+    line-height: 3rem;
 
     color: $primary;
     padding-bottom: 0.5rem;
@@ -36,6 +36,7 @@
     position: absolute;
     bottom: -2rem;
     color: $secondary;
+    font-size: 0.8rem;
   }
 
   @media screen and (max-width: 1024px) {

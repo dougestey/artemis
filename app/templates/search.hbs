@@ -1,23 +1,29 @@
 <ContainerBlock>
-  <section class="ContainerBlock-child--33">
-    <CommandLine
-      @onResult={{action "setResult"}}
-      @onSelect={{action "pushResult"}}
-      @focusCommandLine={{focusCommandLine}}
-      @message={{message}} />
+  <aside class="SearchPane {{if searchPaneCollapsed 'SearchPane--collapsed'}}">
+    <section class="SearchPane-viewport">
+      <CommandLine
+        @onResult={{action "setResult"}}
+        @onSelect={{action "pushResult"}}
+        @focusCommandLine={{focusCommandLine}}
+        @message={{message}} />
 
-    {{#liquid-if results.length class="SearchResults"}}
+      {{#liquid-if results.length class="SearchResults"}}
+        {{#each results as |result|}}
+          <SearchResult
+            @result={{result}}
+            @onSelect={{action "pushResult" }} />
+        {{/each}}
+      {{/liquid-if}}
+    </section>
 
-      {{#each results as |result|}}
-        <SearchResult
-          @result={{result}}
-          @onSelect={{action "pushResult" }} />
-      {{/each}}
+    <section class="SearchPane-toggle">
+      <button class="SearchPane-button" {{action "toggleSearch"}}>
+        {{svg-jar "arrow"}}
+      </button>
+    </section>
+  </aside>
 
-    {{/liquid-if}}
-  </section>
-
-  <div class="SelectedEntities ContainerBlock-child--66">
+  <div class="SelectedEntities {{if searchPaneCollapsed 'SelectedEntities--expanded'}}">
     {{#each selected as |entity|}}
       <SelectedEntity
         @entity={{entity}}

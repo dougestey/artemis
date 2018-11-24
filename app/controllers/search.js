@@ -6,7 +6,13 @@ export default Controller.extend({
 
   selected: [],
 
+  searchPaneCollapsed: false,
+
   actions: {
+    toggleSearch() {
+      this.toggleProperty('searchPaneCollapsed');
+    },
+
     setResult(results) {
       if (results.length === 0) {
         this.set('message', 'No results.');
