@@ -1,7 +1,8 @@
-# artemis
+# Artemis
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+A "command-line" interface to [Sentinel](https://github.com/dougestey/sentinel).
+
+![untitled](https://user-images.githubusercontent.com/680366/48974234-7eb1c780-f020-11e8-8745-2e1efd30ac49.png)
 
 ## Prerequisites
 
