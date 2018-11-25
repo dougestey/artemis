@@ -1,6 +1,6 @@
 # Artemis
 
-A "command-line" interface to [Sentinel](https://github.com/dougestey/sentinel).
+A "command-line" interface to [Sentinel](https://github.com/dougestey/sentinel), the fleet tracker for EVE Online that powers [GLOSS](https://github.com/dougestey) - and now this project.
 
 ![untitled](https://user-images.githubusercontent.com/680366/48974234-7eb1c780-f020-11e8-8745-2e1efd30ac49.png)
 
