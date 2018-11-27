@@ -24,7 +24,7 @@ body {
   margin: 0;
 }
 
-.SearchPane {
+.Pane {
   flex-basis: 400px;
   flex-shrink: 0;
   height: 100%;
@@ -41,11 +41,24 @@ body {
   }
 
   &--collapsed {
-    margin-left: -370px;
+    background-color: transparent;
 
-    .SearchPane-button {
-      transform: rotate(0);
-      opacity: 0.15;
+    &.Pane--left {
+      margin-left: -370px;
+
+      .Pane-button {
+        transform: rotate(0);
+        opacity: 0.15;
+      }
+    }
+
+    &.Pane--right {
+      margin-right: -370px;
+
+      .Pane-button {
+        transform: rotate(180deg);
+        opacity: 0.15;
+      }
     }
   }
 
@@ -54,7 +67,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;
   }
 
   &-button {
@@ -63,7 +75,6 @@ body {
     width: 2rem;
     outline: none;
     transform-origin: 50% 37%;
-    transform: rotate(-180deg);
     cursor: pointer;
     opacity: 0.2;
     transition: 175ms opacity ease-in;
@@ -73,7 +84,19 @@ body {
     }
 
     &:hover {
-      opacity: 1;
+      opacity: 1 !important;
+    }
+  }
+
+  &--left {
+    .Pane-button {
+      transform: rotate(-180deg);
+    }
+  }
+
+  &--right {
+    .Pane-button {
+      transform: rotate(0deg);
     }
   }
 
@@ -81,9 +104,15 @@ body {
     flex-basis: 100%;
 
     &--collapsed {
-      margin-left: -90%;
-  
-      .SearchPane-button {
+      &.Pane--right {
+        margin-right: -90%;
+      }
+
+      &.Pane--left {
+        margin-left: -90%;
+      }
+
+      .Pane-button {
         transform: rotate(0);
         opacity: 0.15;
       }
@@ -119,5 +148,44 @@ body {
     &--expanded {
       flex-basis: 90%;
     }
+  }
+}
+
+.Toggle {
+  border: 1px $secondary solid;
+  background: transparent;
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin: 1.25rem 0 0 1.25rem;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &--checked:after {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    top: 0.2rem;
+    left: 0.2rem;
+    position: absolute;
+    background: $primary;
+  }
+
+  &-control {
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &-label {
+    color: $secondary;
+    min-width: 200px;
+    margin-left: 1.5rem;
+    font-size: 0.8rem;
   }
 }

@@ -1,14 +1,33 @@
 <ContainerBlock>
-  <aside class="SearchPane {{if searchPaneCollapsed 'SearchPane--collapsed'}}">
-    <section class="SearchPane-viewport">
+  <aside class="Pane Pane--left {{if searchPaneCollapsed 'Pane--collapsed'}}">
+    <section class="Pane-viewport">
+      {{#if character}}
+        <label for="standingFilter" class="Toggle {{if standingFilter 'Toggle--checked'}}">
+          {{input class="Toggle-control" id="standingFilter" type="checkbox" checked=standingFilter onchange=(action 'toggleStandingFilter')}}
+
+          <span class="Toggle-label">
+            {{#liquid-if standingFilter use="fade"}}
+              Filtering out blues
+            {{else}}
+              Showing all matches
+            {{/liquid-if}}
+          </span>
+        </label>
+      {{else}}
+        <button class="Button Button--small" {{action "authorize"}}>
+          Log in to filter out friendlies
+        </button>
+      {{/if}}
+
       <CommandLine
         @onResult={{action "setResult"}}
         @onSelect={{action "pushResult"}}
         @focusCommandLine={{focusCommandLine}}
+        @standingFilter={{standingFilter}}
         @message={{message}} />
 
       {{#liquid-if results.length class="SearchResults"}}
-        {{#each results as |result|}}
+        {{#each (if standingFilter resultsWithoutBlues results) as |result|}}
           <SearchResult
             @result={{result}}
             @onSelect={{action "pushResult" }} />
@@ -16,19 +35,18 @@
       {{/liquid-if}}
     </section>
 
-    <section class="SearchPane-toggle">
-      <button class="SearchPane-button" {{action "toggleSearch"}}>
+    <section class="Pane-toggle">
+      <button class="Pane-button" {{action "toggleSearch"}}>
         {{svg-jar "arrow"}}
       </button>
     </section>
   </aside>
 
   <div class="SelectedEntities {{if searchPaneCollapsed 'SelectedEntities--expanded'}}">
-    {{#each selected as |entity|}}
+    {{#each (if standingFilter selectedWithoutBlues selected) as |entity|}}
       <SelectedEntity
         @entity={{entity}}
         @removeEntity={{action "removeEntity"}} />
     {{/each}}
   </div>
-
 </ContainerBlock>

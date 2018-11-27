@@ -1,0 +1,78 @@
+.Button {
+  display: block;
+  background: linear-gradient(transparent, rgba($secondary, 0.05), rgba($secondary, 0.1));
+  color: rgba($primary, 0.70);
+  padding: 1.5rem 2rem;
+  font-family: 'Titillium Web';
+
+  border-left: 0.5px solid rgba($secondary, 0.1);
+  border-right: 0.5px solid rgba($secondary, 0.1);
+  border-top: none;
+  border-bottom: none;
+
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  animation: typing 250ms ease-in;
+  transition: color 250ms ease-in;
+  position: relative;
+  outline: none;
+
+  &:hover,
+  &.active {
+    color: rgba($primary, 1);
+    background: linear-gradient(transparent, rgba($secondary, 0.1), rgba($secondary, 0.2));
+
+    &:after {
+      left: 0;
+      right: 0;
+      animation: expand 300ms linear;
+    }
+  }
+
+  &.active::after {
+    background-color: rgba($primary, 1);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    background-color: rgba($secondary, 0.5);
+    margin-top: 2rem;
+    transition: background-color 375ms;
+  }
+
+  &--small {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  &--mini {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    margin: -0.25rem;
+  }
+
+  &--frameless {
+    &:after {
+      visibility: hidden;
+    }
+  }
+
+  &--detail {
+    color: $secondary;
+  }
+}
