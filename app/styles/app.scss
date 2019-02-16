@@ -24,6 +24,14 @@ body {
   margin: 0;
 }
 
+.primary {
+  color: $primary !important;
+}
+
+.secondary {
+  color: $secondary !important;
+}
+
 .Pane {
   flex-basis: 400px;
   flex-shrink: 0;

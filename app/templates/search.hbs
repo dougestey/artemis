@@ -20,11 +20,11 @@
       {{/if}}
 
       <CommandLine
-        @onResult={{action "setResult"}}
-        @onSelect={{action "pushResult"}}
         @focusCommandLine={{focusCommandLine}}
         @standingFilter={{standingFilter}}
-        @message={{message}} />
+        @message={{message}}
+        @runSentinelQuery={{runSentinelQuery}}
+        @runBatchSentinelQuery={{runBatchSentinelQuery}} />
 
       {{#liquid-if results.length class="SearchResults"}}
         {{#each (if standingFilter resultsWithoutBlues results) as |result|}}
@@ -43,10 +43,14 @@
   </aside>
 
   <div class="SelectedEntities {{if searchPaneCollapsed 'SelectedEntities--expanded'}}">
-    {{#each (if standingFilter selectedWithoutBlues selected) as |entity|}}
-      <SelectedEntity
-        @entity={{entity}}
-        @removeEntity={{action "removeEntity"}} />
-    {{/each}}
+    {{#if runSentinelQuery.isRunning}}
+      <LoadingAnimation />
+    {{else}}
+      {{#each (if standingFilter selectedWithoutBlues selected) as |entity|}}
+        <SelectedEntity
+          @entity={{entity}}
+          @removeEntity={{action "removeEntity"}} />
+      {{/each}}
+    {{/if}}
   </div>
 </ContainerBlock>

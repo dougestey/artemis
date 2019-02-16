@@ -7,14 +7,14 @@ export default Component.extend({
   classNames: ['SelectedEntity'],
 
   click() {
-    this.removeEntity(this.entity.id);
+    window.open(`https://zkillboard.com/character/${this.entity.id}`);
   },
 
   lastActive: computed('entity.fleet.lastSeen', function() {
     if (this.entity.history.length)
       return this.entity.history[this.entity.history.length - 1].lastSeen;
 
-    return 'Unknown';
+    return 'N/A';
   }),
 
   averageFleetSize: computed('entity.history', function() {
@@ -27,7 +27,7 @@ export default Component.extend({
     if (sum && this.entity.history.length)
       return parseInt(sum / this.entity.history.length);
 
-    return 'Unknown';
+    return 'N/A';
   }),
 
   mostCommonShipType: computed('entity.history', function() {
@@ -52,4 +52,10 @@ export default Component.extend({
 
     return htmlSafe(`background-image: url(https://imageserver.eveonline.com/Character/${this.entity.id}_512.jpg) !important;`);
   }),
+
+  actions: {
+    clearEntity() {
+      this.removeEntity(this.entity.id);
+    }
+  }
 });

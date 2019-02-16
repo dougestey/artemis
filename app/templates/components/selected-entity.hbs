@@ -17,6 +17,10 @@
 
   <br>
 
+  <button class="Button Button--mini" {{action "clearEntity"}}>
+    Remove
+  </button>
+
   <br>
 
   <br>
@@ -29,12 +33,14 @@
 
   <br>
 
-  Danger: {{entity.dangerRatio}}
+  Danger: <span class="primary">{{entity.dangerRatio}}</span>
   <br>
-  Average fleet size: {{averageFleetSize}}
+  Known Cyno: <span class="primary">{{if entity.knownCyno 'Yes' 'No'}}</span>
+  <br>
+  Avg fleet size: <span class="primary">{{averageFleetSize}}</span>
   <br>
 
-  {{#if (eq lastActive 'Unknown')}}
+  {{#if (eq lastActive 'N/A')}}
     Not yet seen in fleet
   {{else}}
     Last seen {{moment-from-now lastActive interval=1000}}
