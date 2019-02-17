@@ -41,11 +41,11 @@ body {
   align-items: center;
   flex-direction: row;
   background-color: transparentize($secondary, 0.9);
-  transition: 375ms margin ease-in, 375ms background-color ease-in;
+  transition: 250ms margin ease-in, 250ms background-color ease-in;
   overflow: hidden;
 
   &:hover {
-    background-color: transparentize($secondary, 0.88);
+    background-color: transparentize($secondary, 0.85);
   }
 
   &--collapsed {

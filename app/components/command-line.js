@@ -12,4 +12,10 @@ export default Component.extend({
   didInsertElement() {
     this.element.childNodes[0].focus();
   },
+
+  actions: {
+    clear (event) {
+      event.target.value = '';
+    }
+  }
 });

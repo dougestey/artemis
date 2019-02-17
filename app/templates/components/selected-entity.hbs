@@ -42,7 +42,9 @@
 
   {{#if (eq lastActive 'N/A')}}
     Not yet seen in fleet
+  {{else if (eq lastActive 'Now')}}
+    <span class="primary">Active right now</span>
   {{else}}
-    Last seen {{moment-from-now lastActive interval=1000}}
+    Last seen: <span class="primary">{{moment-from-now lastActive interval=1000}}</span>
   {{/if}}
 </div>

@@ -14,7 +14,7 @@
           </span>
         </label>
       {{else}}
-        <button class="Button Button--small" {{action "authorize"}}>
+        <button class="Button Button--mini" {{action "authorize"}}>
           Log in to filter out friendlies
         </button>
       {{/if}}
@@ -24,7 +24,9 @@
         @standingFilter={{standingFilter}}
         @message={{message}}
         @runSentinelQuery={{runSentinelQuery}}
-        @runBatchSentinelQuery={{runBatchSentinelQuery}} />
+        @runBatchSentinelQuery={{runBatchSentinelQuery}}
+        @hasKeyedUp={{hasKeyedUp}}
+        @results={{results.length}} />
 
       {{#liquid-if results.length class="SearchResults"}}
         {{#each (if standingFilter resultsWithoutBlues results) as |result|}}
@@ -45,12 +47,12 @@
   <div class="SelectedEntities {{if searchPaneCollapsed 'SelectedEntities--expanded'}}">
     {{#if runSentinelQuery.isRunning}}
       <LoadingAnimation />
-    {{else}}
-      {{#each (if standingFilter selectedWithoutBlues selected) as |entity|}}
-        <SelectedEntity
-          @entity={{entity}}
-          @removeEntity={{action "removeEntity"}} />
-      {{/each}}
     {{/if}}
+
+    {{#each (if standingFilter selectedWithoutBlues selected) as |entity|}}
+      <SelectedEntity
+        @entity={{entity}}
+        @removeEntity={{action "removeEntity"}} />
+    {{/each}}
   </div>
 </ContainerBlock>

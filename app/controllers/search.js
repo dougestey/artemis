@@ -58,6 +58,8 @@ export default Controller.extend({
     }
 
     if (query.indexOf('\n') !== -1) {
+      this.set('selected', []);
+
       let queries = query.split('\n');
 
       let { results, notFound } = yield this.runBatchSentinelQuery.perform(queries);

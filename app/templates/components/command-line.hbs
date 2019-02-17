@@ -3,6 +3,7 @@
   class="CommandLine-control"
   placeholder="Enter a pilot name"
   spellcheck="false"
+  onclick={{action "clear"}}
   oninput={{perform runSentinelQuery value="target.value"}} />
 
 <div class="CommandLine-message">
@@ -11,8 +12,10 @@
   {{else}}
     {{#liquid-if @message use="fade" shrinkDelay=2000}}
       {{@message}}
-    {{else if hasKeyedUp}}
-      Tip: use tab to navigate results
+    {{else if (and results hasKeyedUp)}}
+      Tab to navigate results, enter to select
+    {{else if (and results hasKeyedUp)}}
+      No results.
     {{else}}
       Or ctrl+v a list of channel members.
     {{/liquid-if}}
